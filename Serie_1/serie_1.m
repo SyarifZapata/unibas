@@ -5,28 +5,28 @@ p1 = 1; % oberer Bandbreite
 q1 = 2; % unterer Bandbreite
 
 %%
-tic
+tic;
 [Ls,Rs] = lr_standard(A1)
 toc
 %%
-tic
+tic;
 [L,R] = lr_band(A1,p1,q1)
 toc
 
 %%
-tic
+tic;
 ys=forward_sub_standard(Ls,b1)
 toc
 %%
-tic
+tic;
 y=forward_sub(L,b1,q1)
 toc
 %%
-tic
+tic;
 xs=backward_sub_standard(Rs,y)
 toc
 %%
-tic
+tic;
 x=backward_sub(R,y,p1)
 toc
 %%
@@ -35,28 +35,28 @@ b2 =[23;89;66;11;17]
 p2 =4;
 q2 =1;
 %%
-tic
+tic;
 [Ls,Rs] = lr_standard(A2)
 toc
 %%
-tic
+tic;
 [L,R] = lr_band(A2,p2,q2)
 toc
 
 %%
-tic
+tic;
 ys=forward_sub_standard(Ls,b2)
 toc
 %%
-tic
+tic;
 y=forward_sub(L,b2,q2)
 toc
 %%
-tic
+tic;
 xs=backward_sub_standard(Rs,y)
 toc
 %%
-tic
+tic;
 x=backward_sub(R,y,p1)
 toc
 %%
