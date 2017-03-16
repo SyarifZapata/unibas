@@ -1,0 +1,26 @@
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="sample.MainWindowController"
+            xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css">
+
+    <top>
+    </top>
+
+    <left>
+        <VBox>
+            <TextArea fx:id="textAreaMessages" prefHeight="500" prefWidth="610" editable="false">
+            </TextArea>
+        </VBox>
+    </left>
+
+    <bottom>
+        <GridPane hgap="10">
+            <TextField fx:id="textFieldMessage" prefWidth="500"  GridPane.rowIndex="0" GridPane.columnIndex="0" />
+            <Button prefWidth="100" text="Send"  GridPane.rowIndex="0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.halignment="RIGHT"/>
+            <Hyperlink text="www.sand-unibas.blogspot.com" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        </GridPane>
+    </bottom>
+
+</BorderPane>
