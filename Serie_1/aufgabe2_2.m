@@ -11,3 +11,6 @@ R4 = A*P
 R5 = (P*A)*P
 R6 = (P*A)*(P.')
 %%
+
+
+per_sign(P)

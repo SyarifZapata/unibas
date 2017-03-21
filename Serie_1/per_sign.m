@@ -1,3 +1,7 @@
 function s = per_sign(P)
-s = 
+n=length(P);
+s=det(P);
 end
+    
+
+%% find   
