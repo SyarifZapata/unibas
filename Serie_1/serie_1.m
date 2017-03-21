@@ -8,6 +8,7 @@ q1 = 2; % unterer Bandbreite
 tic;
 [Ls,Rs] = lr_standard(A1)
 toc
+
 %%
 tic;
 [L,R] = lr_band(A1,p1,q1)
