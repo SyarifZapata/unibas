@@ -1,0 +1,18 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane fx:controller="LoginController" hgap="10" vgap="10" alignment="CENTER"
+          xmlns:fx="http://javafx.com/fxml" stylesheets="@style.css">
+
+    <Label text="server-Ip: " GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <TextField fx:id="textFieldIP" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2"
+            text="localhost"/>
+    <Label text="Port:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+    <TextField fx:id="textFieldPort" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2"
+            text="9999"/>
+    <Label text="Name: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+    <TextField fx:id="textFieldName" GridPane.rowIndex="2" GridPane.columnIndex="1" GridPane.columnSpan="2"/>
+    <Button fx:id="connectBtn" text="Connect" onAction="#connect" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+    <CheckBox fx:id="checkBoxConnectAs" text="Run as server" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+    <Label fx:id="warning" GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+
+</GridPane>
