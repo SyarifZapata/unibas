@@ -1,11 +1,12 @@
-/**
- * Created by Arkad on 3/20/2017.
- */
-
 public enum CommandList {
 
-    CHANGE_USERNAME("Change username"),
-    QUIT("Quit current program");
+    IDENTIFY("Server invites Client to submit his username"),
+    IDENTIFYING("Client submits his username"),
+    WELCOME("Server confirms that Client has been added"),
+    MESSAGE("Messages sent between Server and Clients"),
+    NEWNAME("Client requests new name"),
+    NAMECHANGED("Confirm that Clientname has changed");
+    //QUIT("Quit current program");
 
 
 

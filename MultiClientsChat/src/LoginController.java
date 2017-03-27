@@ -7,7 +7,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.net.InetAddress;
 
+import java.net.UnknownHostException;
 import java.io.IOException;
 
 /** This is the controller of the login GUI */
@@ -29,8 +31,9 @@ public class LoginController {
     /** Hide warning label */
     public void initialize(){
         warning.setVisible(false);
+				setCompName();
     }
-
+		
     /** connect button is pressed, if Checkbox is checked, call the Sever scene,
      *  otherwise client scene will be called
      *  User inputs are validated here.
@@ -94,5 +97,17 @@ public class LoginController {
             }
         }
     }
+		
+/** Get computername and suggest as nickname */
+		public void setCompName() {
+				try {
+					InetAddress localMachine = InetAddress.getLocalHost();
+					String name = localMachine.getHostName();
+					name = name.substring(0, name.lastIndexOf("-"));
+					textFieldName.textProperty().set(name);
+				} catch (UnknownHostException e) {
+					System.out.println("Hostname not resolved");
+				}
+		}
 
 }

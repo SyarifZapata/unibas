@@ -1,12 +1,18 @@
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
 
 import java.awt.*;
-import java.io.*;
-import java.net.Socket;
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 
 /**
  * Created by Nils, Syarif on 3/15/2017.
@@ -14,11 +20,8 @@ import java.net.URISyntaxException;
  * All messages are Objects of Message class
  */
 public class ClientController {
-    Socket mySocket = null;
-    ObjectInputStream in = null;
-    ObjectOutputStream out = null;
-    boolean connected = false;
 
+    private Client client;
     private int port;
     private String ip;
     private String userName;
@@ -28,14 +31,37 @@ public class ClientController {
     private TextArea textAreaMessages;
     @FXML
     private TextField textFieldMessage;
+    @FXML
+    private BorderPane clientBorderPane;
 
 
     public void initialize()throws Exception{
         (new Thread() {
             public void run() {
-                connect(port,ip);
-                communicate(in,out);
-                writeToServer();
+                client = new Client(ip,userName,port){
+                    public void display(String command, Message msg){
+                        switch(command) {
+                            case "WELCOME":
+                                textAreaMessages.appendText("Welcome to SAND, "+userName+"\n");
+                                //enable text-input in chat
+                                break;
+                            case "MESSAGE":
+                                textAreaMessages.appendText(msg.getMessage()+"\n");
+                                break;
+                        }
+                    }
+                    public void display(CommandList command, String msg){
+                        switch(command) {
+                            case WELCOME:
+                                textAreaMessages.appendText("Welcome to SAND, "+userName+"\n");
+                                //enable text-input in chat
+                                break;
+                            case MESSAGE:
+                                textAreaMessages.appendText(msg+"\n");
+                                break;
+                        }
+                    }
+                };
             }
         }).start();
     }
@@ -44,15 +70,10 @@ public class ClientController {
     public void send(){
         (new Thread(){
             public void run() {
-                String incoming = "";
-                incoming = textFieldMessage.getText();
-                Message message = new Message(incoming);
-                textFieldMessage.clear();
-                try {
-                    out.writeObject(message);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+               Message message = null;
+               message = new Message(textFieldMessage.getText());
+               client.writeToServer(message);
+               textFieldMessage.clear();
             }
         }).start();
     }
@@ -75,91 +96,40 @@ public class ClientController {
         this.userName = userName;
     }
 
-    /** establish connection (Socket) with Server
-     * set Streams "in" and "out"
-     */
-    public void connect(int port,String ip){
-        try{
-            mySocket = new Socket(ip,port);
-            connected = true;
-        } catch (IOException e){
-            textAreaMessages.appendText("konnte nicht mit Server verbinden."+"\n");
+
+    @FXML
+    public void showUsernameDialog() {
+        Dialog<ButtonType> dialog = new Dialog<ButtonType>();
+        dialog.initOwner(clientBorderPane.getScene().getWindow());
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("settingsDialog.fxml"));
+        try {
+            dialog.getDialogPane().setContent(fxmlLoader.load());
+
+        } catch (IOException e) {
+            System.out.println("Couldn't load the dialog");
+            e.printStackTrace();
+            return;
         }
 
-        try{
-            out = new ObjectOutputStream(mySocket.getOutputStream());
-            in = new ObjectInputStream(mySocket.getInputStream());
-        }
-        catch(IOException e){
-            System.out.println(e);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            DialogController controller = fxmlLoader.getController();
+            System.out.println("OK pressed");
+            userName = controller.changeUsername(); // username changed
+            client.requestNewName(userName);
+            Stage stage = (Stage)clientBorderPane.getScene().getWindow();
+            stage.setTitle("Client-" + userName);
+        } else {
+            System.out.println("Cancel pressed");
         }
     }
 
 
-    /** listen to inputs in console or GUI and send them to the server. */
-    public void writeToServer(){
-        (new Thread(){
-            public void run(){
-                BufferedReader cons = new BufferedReader(new InputStreamReader(System.in));
-                Message message;
-                while(true){
-                    try{
-                        message = new Message(cons.readLine());
-                        out.writeObject(message);
-                    } catch(IOException e){
-                        System.out.println(e);
-                    }
-
-                }
-            }
-        }).start();
-    }
-
-    /** Definition of protocol
-     * IDENTIFY: send userName
-     * WELCOME: confirmation that connected
-     * MESSAGE: incoming message of server
-     * */
-    private void communicate(ObjectInputStream in, ObjectOutputStream out) {
-        (new Thread(){
-            public void run(){
-                while(true) {
-                    Message line = null;
-                    try {
-                        line = (Message)in.readObject();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (line.getMessage().startsWith("IDENTIFY")) {
-                        Message requestClientName = new Message(userName);
-                        try {
-                            out.writeObject(requestClientName);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        System.out.println("C: IDENTIFY = "+requestClientName);
-
-                    } else if (line.getMessage().startsWith("WELCOME")) {
-                        //textField.setEditable(true);
-                        System.out.println("WELCOMED BY SERVER:"+line.getMessage());
-                        textAreaMessages.appendText("Welcome to SAND, "+userName+"\n");
-                    } else if (line.getMessage().startsWith("MESSAGE")) {
-                        //messageArea.append(line.substring(8) + "\n");
-                        System.out.println("S:"+line.getMessage().substring(8) + "\n");
-                        textAreaMessages.appendText(line.getMessage().substring(8) + "\n");
-                    }else if(line.getMessage().startsWith("NAMECHANGED")){
-                        System.out.println("Your new Username was accepted.");
-                    }
-                }
-            }
-        }).start();
-    }
-
-    /** Open default browser and go to our blog */
+        /** Open default browser and go to our blog */
     public void link(){
         try {
             Desktop.getDesktop().browse(new URI("http://www.sand-unibas.blogspot.com"));
