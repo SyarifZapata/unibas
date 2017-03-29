@@ -2,6 +2,7 @@
 
 clc;
 clear;
+close all;
 
 load A.txt
 A= spconvert(A);
@@ -11,7 +12,7 @@ load b.txt
 
 AFull= full(A);
 length = length(AFull)
-
+size(A)
 %%
 tic;
 [L,R,P]=gaussGAXPY(AFull);
@@ -20,7 +21,7 @@ toc
 %%
 tic;
 LChol = cholesky(AFull);
-toc;
+toc
 
 %%
 y = forward_sub_standard(L,b);
@@ -36,15 +37,21 @@ error = norm(xm -x);
 errChol = norm(xm -xchol);
 
 %%
-spy(AFull)
 subplot(3, 3,1)
-spy(L)
+spy(AFull)
+
 subplot(3, 3,2)
-spy(R)
+spy(L)
+
 subplot(3, 3,3)
-spy(P)
+spy(R)
+
 subplot(3, 3,4)
-spy(LChol)
+spy(P)
+
 subplot(3, 3,5)
+spy(tril(LChol))
+
+
 
 %%

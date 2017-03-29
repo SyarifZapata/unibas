@@ -9,21 +9,14 @@ tf = issymmetric(A);
     end
     
     for i =1:n 
-        if i ~=1
-            sum = 0;
-            for k = 1:i-1
-                sum = sum + (A(i,k).^2);
-            end
-            if sum <0
+       
+            if (A(i,i)-(A(i,1:i-1)* A(i,1:i-1)')) < 0
                 warning('Not a positive-definite matrix')
                 A = zeros(n);
                 return 
             end
-        % s1 = symsum(A(i,k).^2, k, 1,i-1);
-        else
-            sum = 0;
-        end
-        A(i,i) = sqrt(A(i,i)-sum);
+        
+        A(i,i) = sqrt(A(i,i)-(A(i,1:i-1)* A(i,1:i-1)'));
         %for j = i+1:n
             if i~=1
                 sum2 =0;
