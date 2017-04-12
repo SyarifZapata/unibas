@@ -1,7 +1,7 @@
 function p = lagrange_interpol(x,y,z)
 n = length(x);
 
-p= 0;
+p= 0
     
     for j = 1:n
   
@@ -9,12 +9,13 @@ p= 0;
             L =1;
             for k = 1:n
                 if k ~= j
-                L = L .* (z-x(k))/(x(j)-x(k));  
+                L = L .* (z(i)-x(k))/(x(v)-x(k));  
                 
                 end
                 
             end
+            temp = temp + y(v).*L;
        
-        p = p + y(j)*L;
+        p(i)=temp;
     end
 end
