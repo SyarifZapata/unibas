@@ -10,14 +10,14 @@ f = diff(y)./h;
 
 
 %M = zeros(n+1);
-M0 = [2 2*((h(1:n-2).^-1) + (h(2:n-1).^-1)) 2]; %Main Diagonal 
-M1 = [(h(1:n-2).^-1) 1]; % under main diagonal 
-M2 = [1 (h(2:n-1).^-1)]; %above the main diagonal
+Main = [2 2*((h(1:n-2).^-1) + (h(2:n-1).^-1)) 2]; %Main Diagonal 
+MBelow = [(h(1:n-2).^-1) 1]; % under main diagonal 
+MAbove = [1 (h(2:n-1).^-1)]; %above the main diagonal
 
 
-M = diag(M1, -1); %put the values of M1 UNDER the main diagonal(-1)
-M = M + diag(M2, 1); %put the values of M2 ABOVE the main diagonal(-1)
-M = M + diag(M0); %put M0 in the main diagonal 
+M = diag(MBelow, -1); %put the values of M1 UNDER the main diagonal(-1)
+M = M + diag(MAbove, 1); %put the values of M2 ABOVE the main diagonal(-1)
+M = M + diag(Main); %put M0 in the main diagonal 
 
 % vector d defined as in exercise sheet
 d = [3*f(1); 3*((f(1:n-2)/h(1:n-2)) + (f(2:n-1)/h(2:n-1))); 3*f(n-1)];

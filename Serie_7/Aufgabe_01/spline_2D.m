@@ -1,14 +1,15 @@
 function s = spline_2D(x1, x2, y)
 
 n = length(y);  %the length of vector y 
-m = zeros(n+2); % m matrix of dim m+n
+m = zeros(n+2); % 
 m(2:n+1,2:n+1) = y; % 
 y = m;
 
 
-n = length(y); %change length of n to m+n 
+n = length(y); %
 
 A = zeros(n); %create new matrix of size n
+%diag erzeugt auch ein matrix
 
 d1 = ones(1,n-2) * 2/3; %
 d2 = ones(1,n-2) * 1/6; %
@@ -19,8 +20,8 @@ A(n,n-2) = 1; %fill the missing ones
 A(1,3) = 1;
 
 
-alpha = kron(A,A)\y(:); %Kronecker Tensor Product
-alpha = reshape(alpha,[n,n]); %
+alpha = kron(A,A)\y(:); %Kronecker Tensor Product und gleichungen loesen.
+alpha = reshape(alpha,[n,n]); % verwandle alpha in eine nxn matrix 
 
 s = zeros(size(x1));
 for i = 1:n
@@ -30,3 +31,5 @@ for i = 1:n
 end
 
 end
+
+% b(:) == reshape(b,[],1)

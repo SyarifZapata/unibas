@@ -1,6 +1,6 @@
-function beta = fast_fourier_transform(y,n) 
+function gamma = fast_fourier_transform(y,n) 
     if n == 2 
-        beta = [1 1;1 -1]*y;
+        gamma = [1 1;1 -1]*y;
     else
         n = n/2;
         c = fast_fourier_transform(y(1:2:2*n-1,1),n);
@@ -13,8 +13,7 @@ function beta = fast_fourier_transform(y,n)
        gamma = [c+d; c-d];
        %gamma(1:n) = c + d;
        %gamma(n:2*n-1) = c-d;
-       beta = conj(gamma)/n;
+       
     end
-    
 
 end

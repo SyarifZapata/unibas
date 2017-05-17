@@ -8,18 +8,19 @@ y = Points(:, 2);
 n = length(x); % Anzahl der Punkte
 
 % Berechne hier die Stuetzstellen t_k(1),t_k(2),...,t_k(n)
-t_k = zeros(n,1);
-t_k(1) = 0;
-for i = 2:n
-    t_k(i) = t_k(i-1) + sqrt((x(i)-x(i-1)).^2+(y(i)-y(i-1)).^2);
+% k startet from 1 therefore you dont have to change the index. 
+tk = zeros(n,1);
+tk(1) = 0;  % defined in excercise sheet
+for k = 2:n
+    tk(k) = tk(k-1) + sqrt((x(k)-x(k-1)).^2+(y(k)-y(k-1)).^2);
 end
 
 % Bestimme hier die Werte t
-t = (t_k(1):0.01:t_k(n))';
+t = (tk(1):0.1:tk(n))'; %increment 0.1 
 
 % Bestimme die Splines s_x und s_y
-s_x = spline(t_k,x,t);
-s_y = spline(t_k,y,t);
+s_x = spline(tk,x,t);
+s_y = spline(tk,y,t);
 
 % Zeichne hier die Kurve
 plot(s_x, s_y)

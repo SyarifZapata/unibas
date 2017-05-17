@@ -1,12 +1,15 @@
-function beta = beta_coeff(y,n)
- beta = zeros(1,length(y));
-    m = length(y);
-    t = zeros(1,m);
-    for l = 1:m
-        s = 0;
-        for k = 1:m 
-            s = s + y(k)*exp(1)^(((2*pi*1i) / n)*-m*l);
-        end
-        beta = (1/m) * s;
+function beta = beta_coeff(y, n)
+    w = exp(2 * pi * 1i / n);
+    beta = zeros(n, 1);
+    
+    for l = 0:n - 1   
+       temp = 0;
+        
+       for m = 0:n - 1
+           temp = temp + y(m + 1) * (w ^ (-m * l));
+       end
+       
+       beta(l + 1) = temp * (1 / n);       
     end
+
 end
