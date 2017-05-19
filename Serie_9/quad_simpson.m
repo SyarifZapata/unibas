@@ -1,8 +1,15 @@
-function QS = quad_simpson(f,a,b,n)
-if numel(f)>1 % If the input provided is a vector
-    n=numel(f)-1; h=(b-a)/n;
-    QS= h/3*(f(1)+2*sum(f(3:2:end-2))+4*sum(f(2:2:end))+f(end));
-else % If the input provided is an anonymous function
-    h=(b-a)/n; xi=a:h:b;
-    QS= h/3*(f(xi(1))+2*sum(f(xi(3:2:end-2)))+4*sum(f(xi(2:2:end)))+f(xi(end)));
+function QS = quad_simpson(f,a,b,h)
+N = (b-a)/h;
+M = N./2;
+k0 = 0:M-1;
+k1 = 1: M-1;
+
+
+sum1 = sum(f(a+2.*k1.*h));
+sum2 = sum(f(a+(2.*k0+1).*h));
+
+QS= (h./3).* (f(a) + 2.*sum1 + 4.*sum2 + f(b));
+
 end
+
+
