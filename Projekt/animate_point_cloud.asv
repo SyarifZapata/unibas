@@ -10,7 +10,7 @@ for i=1:size(X,2)
     title(strcat('Agenten-Positionen zum Zeitpunkt t = ',num2str(round(t(i)))));
     pause(0.001);
     
-    if i == size(X,2)
+    if round(t(i)) == 2
          outfilename = sprintf('animation_%05d.png',i);
          print(outfilename, '-dpng');
     end

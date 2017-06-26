@@ -1,10 +1,10 @@
 clear;
 clc;
 
-T = 5;
+T = 10;
 t0= 0;
 levels= 5;
-delta_t=2.^(-5);
+delta_t=2.^(-9);
 % Initialisiere die Position und Geschwindigkeit von 100 Individuen
 
 [X]=create_points(100);

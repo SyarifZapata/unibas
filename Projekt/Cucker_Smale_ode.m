@@ -8,7 +8,9 @@ x = [Xi,Yi];
 
 K = 1/N;
 sigma = 1;
+% beta = 0.1;
 beta=0.45;
+% beta = 0.75;
 Nu= @(x) K/(((sigma.^2)+x).^ beta);
 for i = 1:N
     d(i)=0;
