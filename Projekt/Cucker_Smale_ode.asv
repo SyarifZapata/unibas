@@ -1,0 +1,23 @@
+function [f] = Cucker_Smale_ode(t, y)
+dfdt = zeros(2,1);
+x = 
+
+
+N=length(y)/2; 
+X = y(1:N);
+V = y(N+1:end);
+K = 1/N;
+sigma = 1;
+beta=0.45;
+Nu= @(x) K/(((sigma.^2)+x).^ beta);
+for i = 1:N
+    d(i)=0;
+    for j = 1:N
+        A(i,j) = Nu( (norm(X(i)-X(j))).^2 );
+        d(i) = d(i)+A(i,j);
+    end
+end
+D = diag(d);
+f = -(D-A)*V;
+
+end
