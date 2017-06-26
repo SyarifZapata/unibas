@@ -1,6 +1,7 @@
 function [y,t] = Runge_Kutta4(f, T, t0, y0, delta_t)
 %y=zeros(400,1);
 n = (T-t0)/delta_t;
+
 k1 = delta_t .* f(t0,y0);
 k2 = delta_t .* f(t0 + delta_t/2, y0 + k1./2);
 k3 = delta_t .* f(t0 + delta_t/2, y0 + k2./2);
