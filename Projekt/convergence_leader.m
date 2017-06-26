@@ -5,8 +5,9 @@ N = 100;
 T = 2;
 t0 = 0;
 [X] = create_points(N);
-[Y] = create_velocities(N);
-y0 = [X;Y];
+%[Y] = create_velocities(N);
+%y0 = [X;Y];
+y0 = X;
 levels = 5;
 delta_t = 2.^(-9);
 

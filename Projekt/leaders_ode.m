@@ -11,8 +11,8 @@ x = [Xi,Yi];
 K = 1/N;
 sigma = 1;
 beta = 0.5;
-%gama = 0.95;
-gama = 0.2;
+gama = 0.9;
+%gama = 0.2;
 %gama = 0.95;
 dxdt = zeros (N,2);
 
@@ -22,13 +22,13 @@ for i = 1:N
     index = 1;
     sum_Aij = 0;
     for j = 1:N
-        A(i,j) = Nu( (norm([Xi(i);Yi(i)]-[Xi(j);Yi(j)])).^2 );
+        A(i,j) = Nu( (norm([Xi(i) Yi(i)]-[Xi(j) Yi(j)])).^2 );
         d(i) = d(i)+A(i,j);
         
         if i ~= j
-            norm_xj = norm([Xi(j);Yi(j)]).^2;
-            skalProd = dot([Xi(i);Yi(i)],[Xi(j);Yi(j)]);
-            ersteBed = gama .* norm([Xi(i);Yi(i)]) .* norm([Xi(j);Yi(j)]);
+            norm_xj = norm([Xi(j) Yi(j)])^2;
+            skalProd = dot([Xi(i) Yi(i)],[Xi(j) Yi(j)]);
+            ersteBed = gama * norm([Xi(i) Yi(i)]) * norm([Xi(j) Yi(j)]);
             
             x =(ersteBed <= skalProd) && (skalProd <= norm_xj);
             
@@ -36,7 +36,7 @@ for i = 1:N
                 anfuehrer(i,index) = j; 
                 index = index+1; 
                 % Addiere alle Aij von anfuehrer
-                sum_Aij = sum_Aij + (A(i,j).*((skalProd/norm_xj)*[Xi(i);Yi(i)]-[Xi(j);Yi(j)]));
+                sum_Aij = sum_Aij + A(i,j).*((skalProd/norm_xj)*([Xi(i) Yi(i)]-[Xi(j) Yi(j)]));
             end
             
         end
