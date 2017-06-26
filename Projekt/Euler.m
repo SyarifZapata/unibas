@@ -6,7 +6,7 @@ function [y, t] = Euler(f, T, t0, y0, delta_t)
 % (y-y0)/(x-x0) = f in aufgabe 1 =: y'(t) = y(t)+sin(t)
 % y1 = y0 + h . f(x0;y0) 
 % function handle. f= @(t,y) y+sin(t)
-y=zeros(400,1);
+
 n = (T-t0)/delta_t;
 y(:,1)= y0+(delta_t .* f(t0,y0));
 t(1)= t0+delta_t;
