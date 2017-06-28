@@ -1,4 +1,4 @@
- function [ ] = animate_point_cloud( X, t )
+function [ ] = animate_point_cloud( X, t )
 
 N = size(X,1)/2;
 

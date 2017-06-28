@@ -9,14 +9,14 @@ x = [Xi,Yi];
 
 K = 1/N;
 sigma = 1;
-% beta = 0.1;
-% beta=0.45;
-beta = 0.75;
+%beta = 0.1;
+beta=0.45;
+%beta = 0.75;
 Nu= @(x) K/(((sigma.^2)+x).^ beta);
 for i = 1:N
     d(i)=0;
     for j = 1:N
-        A(i,j) = Nu( (norm([Xi(i);Yi(i)]-[Xi(j);Yi(j)])).^2 );
+        A(i,j) =Nu( norm(x(i,:)-x(j,:)).^2 );
         d(i) = d(i)+A(i,j);
     end
 end

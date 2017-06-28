@@ -1,7 +1,7 @@
 clc;
 clear;
 
-%f = @(t,y)simple_ode(t,y);
+% Set up the parameters
 T = 5;
 t0 = 0;
 y0 = simple_ode_exact_solution(0);
