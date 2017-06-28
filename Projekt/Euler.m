@@ -8,6 +8,7 @@ function [y, t] = Euler(f, T, t0, y0, delta_t)
 % function handle. f= @(t,y) y+sin(t)
 
 n = (T-t0)/delta_t;
+t = zeros(n,1);
 y(:,1)= y0+(delta_t .* f(t0,y0));
 t(1)= t0+delta_t;
     for i = 2:n

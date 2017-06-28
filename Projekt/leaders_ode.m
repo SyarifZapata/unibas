@@ -1,6 +1,5 @@
 function [f] = leaders_ode(t,y)
 N = length(y)/2; 
-% N = 100
 
 A=zeros(N);
 d=zeros(1,N);
@@ -17,29 +16,26 @@ gama = 0.9;
 dxdt = zeros (N,2);
 
 Nu= @(x) K/(((sigma.^2)+x).^ beta);
+
 for i = 1:N
     d(i)=0;
-    index = 1;
     sum_Aij = 0;
     for j = 1:N
-        A(i,j) = Nu( (norm([Xi(i) Yi(i)]-[Xi(j) Yi(j)])).^2 );
+        A(i,j) = Nu( norm(x(i,:)-x(j,:)).^2 );
         d(i) = d(i)+A(i,j);
         
-        if i ~= j
-            norm_xj = norm([Xi(j) Yi(j)])^2;
-            skalProd = dot([Xi(i) Yi(i)],[Xi(j) Yi(j)]);
-            ersteBed = gama * norm([Xi(i) Yi(i)]) * norm([Xi(j) Yi(j)]);
+        
+         norm_xj = norm(x(j,:)).^2;
+         skalProd = dot(x(i,:),x(j,:));
+         ersteBed = gama * (norm(x(i,:)) * norm(x(j,:)));
             
-            x =(ersteBed <= skalProd) && (skalProd <= norm_xj);
-            
-            if x == 1
-                anfuehrer(i,index) = j; 
-                index = index+1; 
-                % Addiere alle Aij von anfuehrer
-                sum_Aij = sum_Aij + A(i,j).*((skalProd/norm_xj)*([Xi(i) Yi(i)]-[Xi(j) Yi(j)]));
-            end
-            
-        end
+         bool =(ersteBed <= skalProd) && (skalProd <= norm_xj);
+         % Ni {...}
+         if bool == 1
+             sum_Aij = sum_Aij + A(i,j).*((skalProd/norm_xj)*x(j,:)-x(i,:));
+         end   
+               
+        
     end
     dxdt(i,:) = (1/d(i))* sum_Aij;
 end

@@ -1,5 +1,6 @@
 function [f] = Cucker_Smale_ode(t, y)
 N=length(y)/4;
+
 A=zeros(N);
 d=zeros(1,N);
 Xi = y(1:N);
