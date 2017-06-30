@@ -27,10 +27,10 @@ end
 % Matrix D aufstellen
 D = diag(d);
 
-%System der Differentialgleichung aufstellen. 
 vi= y(2*N+1:3*N);
 vy= y (3*N+1:end);
 v = [vi,vy];
+
 
 Result_dvdt = -(D-A)*v;
 
