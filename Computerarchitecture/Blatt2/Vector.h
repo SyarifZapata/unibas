@@ -3,4 +3,5 @@ struct Vector{
     int y;
     int z;
     struct Vector* link;
+    double abs;
 };

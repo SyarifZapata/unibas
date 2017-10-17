@@ -1,103 +1,93 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "Vector.h"
-#include "VectorList.h"
 
-struct Vector* getElement(struct VectorList* l, int index);
-void insertElementFront(struct VectorList* l, struct Vector* v);
-void insertElementBack(struct VectorList* l, struct Vector* v);
-int size(struct VectorList* l);
-void printVector(struct Vector* vector);
+double getAbsolutValue(struct Vector vector);
+void printArray(struct Vector vector[], int size);
+struct Vector* sortArray(struct Vector vector[], int size);
+int compareFunc(const void *a, const void *b);
+
 
 int main() {
-    struct VectorList* list;
-    list = (struct VectorList*)malloc(sizeof(struct VectorList)); // allocated memory space for the list
-    list->head = NULL;
-    list->tail = NULL;
-    list->size = 0;
 
-    struct Vector* vector1 = (struct Vector*)malloc(sizeof(struct Vector));
-    struct Vector v1 = {3,5,8};
-    *vector1 = v1;
+    struct Vector vector[12];
+    struct Vector v1 = {2,1,5};
+    struct Vector v2 = {9,15,33};
+    struct Vector v3= {7,9,56};
+    struct Vector v4= {3,8,12};
+    struct Vector v5= {13,0,34};
+    struct Vector v6 = {14,8,4};
+    struct Vector v7= {20,87,4};
+    struct Vector v8= {9,8,1};
+    struct Vector v9= {40,11,22};
+    struct Vector v10= {16,24,4};
+    struct Vector v11= {36,3,12};
+    struct Vector v12= {77,56,10};
+    vector[0] = v1;
+    vector[1] = v2;
+    vector[2] = v3;
+    vector[3] = v4;
+    vector[4] = v5;
+    vector[5] = v6;
+    vector[6] = v7;
+    vector[7] = v8;
+    vector[8] = v9;
+    vector[9] = v10;
+    vector[10] = v11;
+    vector[11] = v12;
+    int i;
+    for(i=0;i<12;i++){
+        vector[i].abs = getAbsolutValue(vector[i]);
+    }
 
-    struct Vector* vector2 = (struct Vector*)malloc(sizeof(struct Vector));
-    struct Vector v2 = {15,9,14};
-    *vector2 = v2;
+    int size = sizeof(vector)/ sizeof(vector[0]);
+    printArray(vector, size);
+    struct Vector* p;
+    p = sortArray(vector,size);
+    printf("%d\n", p);
+    printf("%f\n", *p);
 
-    struct Vector* vector3 = (struct Vector*)malloc(sizeof(struct Vector));
-    struct Vector v3 = {9,64,1};
-    *vector3 = v3;
+//    for(i =0; i<size; i++){
+//        printf("%f\n", *p);
+//    }
 
-    insertElementFront(list, vector1);
-    insertElementFront(list, vector2);
-    insertElementBack(list, vector3);
 
-    struct Vector* result = getElement(list,2);
-    printf("Vector found:\n");
-    printVector(result);
-    int listSize = size(list);
-    printf("List size = %d\n",listSize);
-    printf("List head: \n");
-    printVector(list->head);
-    printf("List tail: \n");
-    printVector(list->tail);
     return 0;
 }
 
-void insertElementFront(struct VectorList* l, struct Vector* v){
-    if(l->size == 0){
-        l->tail = v;
-        l->head = v;
-        l->tail->link = NULL;
-        l->head->link = NULL;
-    } else{
-        v->link = l->head;
-        l->head = v;
-    }
-    l->size = l->size+1;
+double getAbsolutValue(struct Vector vector){
+    double result = sqrt((vector.x*vector.x) + (vector.y*vector.y) + (vector.z*vector.z));
+    return result;
 }
 
-void insertElementBack(struct VectorList* l, struct Vector* v){
-    if(l->size == 0){
-        l->head = v;
-        l->tail = v;
-        l->tail->link = NULL;
-        l->head->link = NULL;
-    } else{
-        l->tail->link = v;
-        l->tail = v;
-        l->tail->link = NULL;
-    }
-    l->size = l->size+1;
-}
+void printArray(struct Vector vector[], int size){
 
-struct Vector* getElement(struct VectorList* l, int index){
-    struct Vector* temp = l->head;
     int i;
-    if(index == 0){
-        return l->head;
-    } else{
-        for(i = 0; i < index; i++ ){
-            temp = temp->link;
-        }
-        return temp;
+    for(i=0 ; i<size; i++){
+        int x = vector[i].x;
+        int y = vector[i].y;
+        int z = vector[i].z;
+        printf("(%d, %d, %d)\n",x,y,z);
     }
 }
 
-int size(struct VectorList* l){
-    return l->size;
+int compareFunc(const void *a, const void *b){
+
+   struct Vector* aa = (struct Vector *)a;
+    struct Vector* bb = (struct Vector *)b;
+
+    return (int)(aa->abs - bb->abs);
 }
 
-void printVector(struct Vector* vector){
-    if (vector == NULL){
-        printf("Vector not found\n");
-    } else{
-        printf("x = %d\n",vector->x);
-        printf("y = %d\n",vector->y);
-        printf("z = %d\n",vector->z);
+struct Vector* sortArray(struct Vector vector[], int size){
+    printf("\n\n");
+    qsort(vector, size, sizeof(struct Vector), compareFunc);
+    int i;
+    for(i =0; i<size; i++){
+        printf("%f\n", vector[i].abs);
     }
+//    printArray(vector, size);
+    struct Vector* p = vector;
+    return p;
 }
-
-
-
-
