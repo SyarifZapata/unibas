@@ -2,12 +2,13 @@
 
 
 int main() {
-    int myArray [10];
+    int *myArray [10];
     int i,j;
 
 
     for ( i = 0; i < 10; i++ ) {
-        *(myArray + i) = i + 1; /* set element at location i to i+1 */
+        // an Asterisk is a pointer operator. *myArray will return the value holds in the base address of the array.
+        *(myArray + i) = i + 1;
     }
 
 

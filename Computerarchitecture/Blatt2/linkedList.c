@@ -3,13 +3,15 @@
 #include "Vector.h"
 #include "VectorList.h"
 
-struct Vector* getElement(struct VectorList* l, int index);
-void insertElementFront(struct VectorList* l, struct Vector* v);
-void insertElementBack(struct VectorList* l, struct Vector* v);
-int size(struct VectorList* l);
-void printVector(struct Vector* vector);
+// Function prototype declaration
+struct Vector* getElement(struct VectorList* l, int index); // get element of the desired index (start with 0)
+void insertElementFront(struct VectorList* l, struct Vector* v); // insert element at the beginning of the list
+void insertElementBack(struct VectorList* l, struct Vector* v); // insert element at the end of the list
+int size(struct VectorList* l); // return the size of the list
+void printVector(struct Vector* vector); // print vector nicely
 
 int main() {
+    // create a new pointer of the list
     struct VectorList* list;
     list = (struct VectorList*)malloc(sizeof(struct VectorList)); // allocated memory space for the list
     list->head = NULL;
@@ -33,13 +35,13 @@ int main() {
     insertElementBack(list, vector3);
 
     struct Vector* result = getElement(list,2);
-    printf("Vector found:\n");
+    printf("Vector found: ");
     printVector(result);
     int listSize = size(list);
     printf("List size = %d\n",listSize);
-    printf("List head: \n");
+    printf("List head: ");
     printVector(list->head);
-    printf("List tail: \n");
+    printf("List tail: ");
     printVector(list->tail);
     return 0;
 }
@@ -92,12 +94,6 @@ void printVector(struct Vector* vector){
     if (vector == NULL){
         printf("Vector not found\n");
     } else{
-        printf("x = %d\n",vector->x);
-        printf("y = %d\n",vector->y);
-        printf("z = %d\n",vector->z);
+        printf("(%d, %d, %d)\n",vector->x,vector->y ,vector->z);
     }
 }
-
-
-
-
