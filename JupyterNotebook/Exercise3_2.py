@@ -25,14 +25,18 @@ print(V , "\n")
 zeros =np.zeros((2,3))
 print(zeros)
 np.fill_diagonal(zeros,s)
-
-s_pinv = linalg.pinv(zeros)
+s1 = 1/s[0]
+s2 = 1/s[1]
+s_pinv = zeros.T
+s_pinv[0,0] = s1
+s_pinv[1,1] = s2
+#s_pinv = linalg.pinv(zeros)
 print(s_pinv)
 print("\n")
-x = np.dot(V,s_pinv)
+x = np.dot(V.T,s_pinv)
 print(x)
 print()
-A_inversed = np.dot(x, U.T)
+A_inversed = np.dot(x, np.transpose(U))
 print(A_inversed)
 
 print()

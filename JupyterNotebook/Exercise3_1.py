@@ -1,7 +1,7 @@
 import numpy as np
 import numpy.linalg as linalg
 
-A = np.array([[4, 0, 7], [-2, 2, 3]])
+A = np.array([[4, 0, -7], [-3, 1, 5]])
 U, s, V = linalg.svd(A)
 
 print(A , "\n")
