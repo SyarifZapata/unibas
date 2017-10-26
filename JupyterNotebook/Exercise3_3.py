@@ -31,7 +31,7 @@ print(b)
 print()
 print("Condition number:")
 print(np.dot(linalg.norm(linalg.pinv(A)),linalg.norm(A)))
-# print(linalg.cond(A))
+print(linalg.cond(A))
 
 #zeroing
 # U1 = np.array(U[:,0]).reshape(4,1)
