@@ -7,6 +7,8 @@ data = np.genfromtxt('data.dat')
 A = np.zeros((2,2))
 c = np.zeros((2,1))
 
+print(data)
+
 Ax_squared = 0
 Ax = 0
 rows,cols = data.shape
@@ -31,6 +33,7 @@ c[1,0] = c2
 
 [U,s,Vt] = linalg.svd(A)
 
+print("A is like this: ")
 print(A)
 print()
 print(c)
@@ -43,8 +46,9 @@ print()
 print(Vt)
 
 sInv = np.zeros((2,2))
-sInv[0,0] = 1/A[0,0]
-sInv[1,1] = 1/A[1,1]
+sInv = sInv.T
+sInv[0,0] = 1/s[0]
+sInv[1,1] = 1/s[1]
 
 print()
 print(sInv)
