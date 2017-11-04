@@ -13,7 +13,7 @@ from sklearn import decomposition
 from sklearn.decomposition import PCA
 from sklearn import datasets
 
-# matplotlib inline
+#matplotlib inline
 rcParams['figure.figsize'] = 5, 4
 sb.set_style('whitegrid')
 
@@ -25,6 +25,8 @@ sb.set_style('whitegrid')
 
 variable_names = ['a','b','c','d','e']
 data = pd.read_csv('hald.csv', sep=",", header=None, names=variable_names)
+# data = only til 4
+print(data.shape,"\n")
 
 X = data
 print(data)
