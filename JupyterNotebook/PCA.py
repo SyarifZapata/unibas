@@ -1,56 +1,54 @@
 import pandas as pd
-import numpy as np
 from numpy.testing import assert_array_almost_equal
-import matplotlib.pyplot as plt
 import pylab as plt
 import seaborn as sb
-from IPython.display import Image
-from IPython.core.display import  HTML
 from pylab import rcParams
 
-import sklearn
 from sklearn import decomposition
-from sklearn.decomposition import PCA
-from sklearn import datasets
 
-#matplotlib inline
 rcParams['figure.figsize'] = 5, 4
 sb.set_style('whitegrid')
 
-# iris = datasets.load_iris()
-# X = iris.data
-# print(X)
-# variable_names = iris.feature_names
-# print(X[1:10], "\n")
-
 variable_names = ['a','b','c','d','e']
 data = pd.read_csv('hald.csv', sep=",", header=None, names=variable_names)
-# data = only til 4
-print(data.shape,"\n")
+# print(data, "\n")
 
-X = data
-print(data)
+X = data.ix[:,0:4].values
 
+print(X,"\n")
 
-pca = decomposition.PCA()
-iris_pca = pca.fit_transform(X)
-print(pca.explained_variance_ratio_,"\n")
-print(pca.explained_variance_ratio_.sum(), "\n")
+# create a PCA model with n=? principal components
+pca = decomposition.PCA(n_components=2)
+pca.fit(X)
 
-comps = pd.DataFrame(pca.components_,columns=variable_names)
-print(comps, "\n")
+# get the components from transforming the original data
+scores = pca.transform(X)
 
-# X_projected = pca.inverse_transform(iris_pca)
-X_projected = pca.inverse_transform(-0.525867)
-X_projected2 = iris_pca.dot(pca.components_) + pca.mean_
+print(scores,"\n")
+
+X_reconstructed = pca.inverse_transform(scores)
+print(X_reconstructed, "\n")
+
+X_projected2 = scores.dot(pca.components_) + pca.mean_
 print(X_projected2,'\n')
 
 
-print(X_projected,'\n')
-# assert_array_almost_equal(X_projected, X_projected2)
-sb.heatmap(comps)
-plt.show()
+# print(X_projected,'\n')
+assert_array_almost_equal(X_reconstructed, X_projected2)
 
-# loss = ((X_projected2 - X_projected) ** 2).mean()
-# print(loss)
+#
+loss = ((X_reconstructed - X) ** 2).mean()
+print(loss, "\n")
+
+dim1 = 1
+dim2 = 3
+
+plt.figure()
+plt.scatter(X[:,dim1],X[:,dim2],marker='x',c='r',label='original')
+plt.scatter(X_reconstructed[:,dim1],X_reconstructed[:,dim2],marker='.',c='b',label='reconstructed')
+plt.legend()
+plt.xlabel('X1')
+plt.ylabel('X2')
+plt.title("PCA")
+plt.show()
 

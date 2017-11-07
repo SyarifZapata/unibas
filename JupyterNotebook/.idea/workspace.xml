@@ -21,8 +21,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Exercise3_2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Exercise3_2.py">
+      <file leaf-file-name="AtA.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AtA.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="18">
               <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="29" />
@@ -103,7 +103,10 @@
         <option value="$PROJECT_DIR$/Exercise3_3.py" />
         <option value="$PROJECT_DIR$/exercise4_2" />
         <option value="$PROJECT_DIR$/exercise4_1" />
+        <option value="$PROJECT_DIR$/LoesungPCA.py" />
         <option value="$PROJECT_DIR$/PCA.py" />
+        <option value="$PROJECT_DIR$/LDA.py" />
+        <option value="$PROJECT_DIR$/testLDA.py" />
       </list>
     </option>
   </component>
@@ -185,7 +188,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="JupyterNotebook" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercise3_2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exercise4_1" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -203,7 +206,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="JupyterNotebook" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Exercise3_3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PCA.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -455,19 +458,19 @@
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Exercise3_2" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Exercise3_3" />
-      <item index="2" class="java.lang.String" itemvalue="Python.exercise4_1" />
-      <item index="3" class="java.lang.String" itemvalue="Python.exercise4_2" />
-      <item index="4" class="java.lang.String" itemvalue="Python.PCA" />
+      <item index="0" class="java.lang.String" itemvalue="Python.exercise4_1" />
+      <item index="1" class="java.lang.String" itemvalue="Python.PCA" />
+      <item index="2" class="java.lang.String" itemvalue="Python.LoesungPCA" />
+      <item index="3" class="java.lang.String" itemvalue="Python.LDA" />
+      <item index="4" class="java.lang.String" itemvalue="Python.testLDA" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.PCA" />
-        <item index="1" class="java.lang.String" itemvalue="Python.exercise4_1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.exercise4_2" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Exercise3_3" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Exercise3_2" />
+        <item index="0" class="java.lang.String" itemvalue="Python.LDA" />
+        <item index="1" class="java.lang.String" itemvalue="Python.testLDA" />
+        <item index="2" class="java.lang.String" itemvalue="Python.PCA" />
+        <item index="3" class="java.lang.String" itemvalue="Python.LoesungPCA" />
+        <item index="4" class="java.lang.String" itemvalue="Python.exercise4_1" />
       </list>
     </recent_temporary>
   </component>
@@ -516,7 +519,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -632,7 +635,7 @@
         <state relative-caret-position="544">
           <caret line="33" column="21" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="33" selection-end-column="21" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -681,7 +684,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -721,7 +724,7 @@
         <state relative-caret-position="1188">
           <caret line="67" column="7" lean-forward="false" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -767,7 +770,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -857,7 +860,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exercise4_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
+        <state relative-caret-position="867">
           <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
         </state>
       </provider>
@@ -879,10 +882,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LoesungPCA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="28" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="28" />
+          <folding>
+            <element signature="e#1#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setosa.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data2.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="16" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PCA.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="37" column="48" lean-forward="true" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding>
+            <element signature="e#16#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LDA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
