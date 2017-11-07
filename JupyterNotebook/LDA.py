@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+import matplotlib.pyplot as plt
 
 variable_names = ["sepallength","sepalwidth"]
 setosa = pd.read_csv('setosa.csv', sep=",", header=None ,names=variable_names)
@@ -23,8 +24,20 @@ print(y,"\n")
 lda = LinearDiscriminantAnalysis(n_components=2)
 X_r2 = lda.fit(A, y).transform(A)
 print(X_r2)
+target_names = ['setosa', 'virginica']
 
 
+colors = ['navy', 'turquoise', 'darkorange']
+
+
+plt.figure()
+for color, i, target_name in zip(colors, [1, 2], target_names):
+    plt.scatter(X_r2[y == i, 0], X_r2[y == i, 0], alpha=.8, color=color,
+                label=target_name)
+plt.legend(loc='best', shadow=False, scatterpoints=1)
+plt.title('LDA of IRIS dataset')
+
+plt.show()
 
 
 #
