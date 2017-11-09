@@ -1,9 +1,0 @@
-
-AVRASM ver. 1.56  Z:\home\arkad\github\unibas\7.0\AssemblerApplication1\AssemblerApplication1\main.asm Thu Nov 09 09:06:21 2017
-
-
-CSEG main         00000001
-DEF  xinit        r18
-CSEG l1           00000006
-CSEG l3           0000000e
-CSEG l2           00000010
