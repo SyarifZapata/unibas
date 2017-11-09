@@ -18,7 +18,7 @@ X = data.ix[:,0:4].values
 print(X,"\n")
 
 # create a PCA model with n=? principal components
-pca = decomposition.PCA(n_components=2)
+pca = decomposition.PCA()
 pca.fit(X)
 
 # get the components from transforming the original data
@@ -26,29 +26,29 @@ scores = pca.transform(X)
 
 print(scores,"\n")
 
-X_reconstructed = pca.inverse_transform(scores)
-print(X_reconstructed, "\n")
-
-X_projected2 = scores.dot(pca.components_) + pca.mean_
-print(X_projected2,'\n')
-
-
-# print(X_projected,'\n')
-assert_array_almost_equal(X_reconstructed, X_projected2)
-
+# X_reconstructed = pca.inverse_transform(scores)
+# print(X_reconstructed, "\n")
 #
-loss = ((X_reconstructed - X) ** 2).mean()
-print(loss, "\n")
-
-dim1 = 1
-dim2 = 3
-
-plt.figure()
-plt.scatter(X[:,dim1],X[:,dim2],marker='x',c='r',label='original')
-plt.scatter(X_reconstructed[:,dim1],X_reconstructed[:,dim2],marker='.',c='b',label='reconstructed')
-plt.legend()
-plt.xlabel('X1')
-plt.ylabel('X2')
-plt.title("PCA")
-plt.show()
+# X_projected2 = scores.dot(pca.components_) + pca.mean_
+# print(X_projected2,'\n')
+#
+#
+# # print(X_projected,'\n')
+# assert_array_almost_equal(X_reconstructed, X_projected2)
+#
+# #
+# loss = ((X_reconstructed - X) ** 2).mean()
+# print(loss, "\n")
+#
+# dim1 = 1
+# dim2 = 3
+#
+# plt.figure()
+# plt.scatter(X[:,dim1],X[:,dim2],marker='x',c='r',label='original')
+# plt.scatter(X_reconstructed[:,dim1],X_reconstructed[:,dim2],marker='.',c='b',label='reconstructed')
+# plt.legend()
+# plt.xlabel('X1')
+# plt.ylabel('X2')
+# plt.title("PCA")
+# plt.show()
 
