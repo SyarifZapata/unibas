@@ -1,18 +1,18 @@
 <ASSEMBLER_INFO>
  <VERSION>2.2.7</VERSION>
  <DEVICE>"ATmega128"</DEVICE>
- <WORKING_DIR>C:\Users\Arkad\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\Debug</WORKING_DIR>
+ <WORKING_DIR>C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication1\AssemblerApplication1\Debug</WORKING_DIR>
  <INCLUDE_PATH>
   <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\avrasm\inc</DIR>
   <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
   <DIR></DIR>
  </INCLUDE_PATH>
- <SOURCE_FILE>C:\Users\Arkad\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
+ <SOURCE_FILE>C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</SOURCE_FILE>
  <INCLUDED_FILES>
   <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.150\avrasm\inc\m128def.inc</FILE>
  </INCLUDED_FILES>
  <OBJECT_FILES>
-  <FILE>C:\Users\Arkad\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
+  <FILE>C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication1\AssemblerApplication1\Debug\AssemblerApplication1.obj</FILE>
  </OBJECT_FILES>
  <HEX_FILES>
   <FILE>AssemblerApplication1.hex</FILE>
@@ -22,8 +22,8 @@
   <FILE>AssemblerApplication1.lss</FILE>
  </OUTPUT_FILES>
  <LABELS>
-  <main><FILE>C:\Users\Arkad\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>13</LINE></main>
-  <L1><FILE>C:\Users\Arkad\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>23</LINE></L1>
-  <L2><FILE>C:\Users\Arkad\Documents\Atmel Studio\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>30</LINE></L2>
+  <main><FILE>C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>13</LINE></main>
+  <L1><FILE>C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>19</LINE></L1>
+  <L2><FILE>C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication1\AssemblerApplication1\main.asm</FILE><LINE>26</LINE></L2>
  </LABELS>
 </ASSEMBLER_INFO>

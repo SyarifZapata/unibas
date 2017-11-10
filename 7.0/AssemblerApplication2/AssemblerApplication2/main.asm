@@ -12,14 +12,14 @@ rjmp main
 
 main:
     ldi r16, 14 ; multiplicator
-	ldi r17, 1 ; counter
-	ldi r18, 2 ; init x and the register for the result. f(2) = -14(x) = -28 
+	ldi r17, 0 ; counter
+	ldi r18, 0 ; output register for the result. f(2) = -14(x) = -28 
+	ldi r19, 2 ; init x 
 	ldi r20, 255 ; Two's Complement starts here
-	eor r18,r20
-	inc r18 ; Two's Complement ends here
-	.DEF xinit = r18 ; x
-	mov r19, xinit ; copy xinit to r19
+	eor r19,r20
+	inc r19 ; Two's Complement ends here
 
+	
 L1:
 	cp r17, r16 ; compare r17 with r16
 	brge L2 ; go to L2 if r17 >= r16 

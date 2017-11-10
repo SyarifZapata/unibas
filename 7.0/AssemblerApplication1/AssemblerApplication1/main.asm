@@ -12,10 +12,9 @@ rjmp main
 
 main:
     ldi r16, 12 ; multiplicator
-	ldi r17, 1 ; counter
-	ldi r18, 2 ; init x and the register for the result. f(2) = 12(x) = 24
-	.DEF xinit = r18 ; x
-	mov r19, xinit ; copy xinit to r19
+	ldi r17, 0 ; counter
+	ldi r18, 0 ; output register for the result. f(2) = 12(x) = 24
+	ldi r19, 2 ; init x
 
 L1:
 	cp r17, r16 ; compare r17 with r16
