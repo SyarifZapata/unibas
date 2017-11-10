@@ -13,11 +13,10 @@ rjmp main
 
 main:
     ldi r16, 30 ; multiplicator
-	ldi r17, 1 ; check
-	ldi r18, 10 ; init x and the end result comes here. The Result should be 300
-	ldi r21, 0 ; carry
-	.DEF xinit = r18 ; x
-	mov r19, xinit ; copy xinit to r19
+	ldi r17, 0 ; check
+	ldi r18, 0 ; lower 8 bit register
+	ldi r21, 0 ; carry register or upper 8 bit register
+	ldi r19, 10 ; init x 
 
 L1:
 	cp r17, r16 ; compare r17 with r16

@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.7  C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication2\AssemblerApplication2\main.asm Fri Nov 10 21:44:42 2017
+AVRASM ver. 2.2.7  C:\Users\Arkad\Documents\git-unibas\7.0\AssemblerApplication3\AssemblerApplication3\main.asm Fri Nov 10 21:47:19 2017
 
 
 EQU  SIGNATURE_000 0000001e
@@ -868,5 +868,6 @@ EQU  TWIaddr      00000042
 EQU  SPMRaddr     00000044
 EQU  INT_VECTORS_SIZE 00000046
 CSEG main         00000001
-CSEG L1           00000008
-CSEG L2           0000000d
+CSEG L1           00000006
+CSEG L2           00000010
+CSEG L3           0000000e
