@@ -1,18 +1,24 @@
 import numpy as np
 
+# nReductionDimension, how many dimension you want to have
 def pca(data,nRedDim = 0):
 
-    #centre data
+    # STEP 1: centring the data. the data will be spread close to the origin
     m = np.mean(data,axis=0)
     data -= m
 
-    #sample cov mat
-
+    # STEP 2. find out the sample cov mat
+    # 1/(n-1) a.T*a where a is deviation matrix. (a centered matrix). why should data be transposed??
     C = np.cov(data.T)
 
     # Compute eVal, eVec, sort in desc order
+    # the higest eigenValue is the primary component.
+    # Wie figure out the eigenvectors & values of the covariance matrix
     evals, evecs = np.linalg.eig(C)
+    # argsort gives you small to big
     indices = np.argsort(evals)
+    # we sort flip the data so the highest comes first.
+    # This is method using in python to sort.
     indices = indices[::-1]
     evecs = evecs[:,indices]
     evals = evals[indices]
@@ -21,9 +27,11 @@ def pca(data,nRedDim = 0):
         evecs = evecs[:, :nRedDim]
 
     # generate new data matrix
+    # why we have to transpose the evecs and the data? because of multiplication?
     x = np.dot(evecs.T, data.T)
 
     # reconstruct data
+    # Formula (eVecs * data).T + mean
     y = np.dot(evecs,x).T+ m
 
     return x,y, evals, evecs
