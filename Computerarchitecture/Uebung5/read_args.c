@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <mem.h>
+#include <memory.h>
 
 char* reverse_string(char *str);
 
