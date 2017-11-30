@@ -1,12 +1,12 @@
-/* Rechnerarchitektur und Betriebssysteme Übung 4
+/* Rechnerarchitektur und Betriebssysteme uebung 4
 
     jlottner 200412,ykilcher 201211
-    
+
     Die Professoren forschen einige Zeit (pensum) und gehen dann in die Mensa essen, was es halt gerade hat. Sie merken sich, wie oft sie schon gegessen haben.
-    
+
     Nur Professororen, deren pensum < 1000, die gehen immer direkt in die Mensa.
-    
-    Hier gar nichts ändern! (gilt nur fŸr Aufgabe 1!)
+
+    Hier gar nichts aendern! (gilt nur fuer Aufgabe 1!)
 */
 
 
