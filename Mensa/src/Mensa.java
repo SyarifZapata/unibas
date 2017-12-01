@@ -32,7 +32,7 @@ class Mensa {
         buffet.addAll(Arrays.asList(gerichte));
         System.out.println ("(" + System.currentTimeMillis()+") Mensa: Neue Gerichte bereit. Koennt alle kommen!");
 
-
+		// Wenn es mehr als 10 gerichte auf dem Buffet, mach pause 
         while (buffet.size() >= 10){
             try {
                 System.out.println ("(" + System.currentTimeMillis() + ") Mensa: !Mach mal ne Pause, Koch!");
@@ -40,6 +40,7 @@ class Mensa {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            // Wenn es aufm buffet 3 oder weniger gerichte gibt, wach auf. 
             if (buffet.size()<= 3){
                 notify();
                 System.out.println ("(" + System.currentTimeMillis() + ") Mensa: !Aufwachen!");
