@@ -12,6 +12,8 @@ class Koch extends Thread {
     private int pensum;
     private String[] repertoire = {"Gemuesebratling", "Fleischvogel", "Irgendwas an brauner Sosse", "Dosenravioli", "trockener Reis", "Fotzelschnitte", "Glutamat mit Nitratsalz"};
     java.util.Random random;
+
+    int counter;
     
     public Koch (Mensa mensa, int pensum) {
     this.mensa = mensa;
@@ -34,6 +36,13 @@ class Koch extends Thread {
             
             System.out.println ("(" + System.currentTimeMillis() + ")" +" Koch: " + gerichte[0] + " zubereitet: en Guete! ");
             mensa.put (gerichte);
+            counter += 4;
+            System.out.println("Koch: ich habe schon "+counter+ " gerichte zubereitet!");
+
+            if(counter >= 50){
+                System.out.println("Ich gehe nach Hause");
+                break;
+            }
         }
     }
 }

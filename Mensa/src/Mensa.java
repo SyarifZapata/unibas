@@ -52,7 +52,8 @@ class Mensa {
         while (buffet.isEmpty()){
             System.out.println ("(" + System.currentTimeMillis() + ") " +"Mensa: Nichts mehr da, Herr Prof " + id + ", sie muessen warten!");
             try {
-                wait();
+                wait(5000);
+                return "";
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

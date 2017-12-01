@@ -21,6 +21,16 @@ class Uni {
     prof[2] = new Prof(2, mensa, 4000);
     prof[3] = new Prof(3, mensa, 4000);
     prof[4] = new Prof(4, mensa, 4000);
+
+    try {
+      chef.join();
+      prof[0].join();
+      prof[1].join();
+      prof[2].join();
+      prof[4].join();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
   }
 }
 

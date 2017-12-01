@@ -39,6 +39,10 @@ class Prof extends Thread {
             }
             System.out.println ("(" + System.currentTimeMillis() + ")" +" Prof " + id + ": Ich hab Hunger. ");
             gericht = mensa.get(id);
+            if(gericht.isEmpty()){
+                System.out.println("FERTIGGG");
+                break;
+            }
             gegessen++;
             System.out.println ("(" + System.currentTimeMillis() + ")" +" Prof " + id + ": lecker, " + gericht + ", das gabs schon lange nicht mehr!");
             System.out.println ("(" + System.currentTimeMillis() + ") Prof " + id + ": Das ist jetzt das " + gegessen + "te mal und ich weiss immer noch nicht wo die Gabeln sind.");
